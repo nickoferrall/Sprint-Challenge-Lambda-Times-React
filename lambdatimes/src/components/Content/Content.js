@@ -45,7 +45,18 @@ export default class Content extends Component {
           of the items from cardData. 
         - else, it should only return those cards whose 'tab' matched this.state.selected.
     */
-    return this.state.cards;
+
+    if (this.state.selected === 'all') {
+      // console.log('filterCards all =', this.state.selected)
+      return this.state.cards;
+    }
+    else {
+      console.log('this.state.cards =', 
+      this.state.cards.filter( e => e.tab ==='technology' ))
+      return this.state.cards.filter(
+        e => e.tab === this.state.selected
+      )
+    }
   };
 
   selectedTab = (event) => {
@@ -54,7 +65,7 @@ export default class Content extends Component {
     // this.setState({
     //   selected: event.target
     // })
-    console.log('selectedTab returns...', this.state.selected)
+    // console.log('selectedTab returns...', this.state.selected)
   }
 
   render() {
