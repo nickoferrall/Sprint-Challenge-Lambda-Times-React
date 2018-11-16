@@ -62,10 +62,6 @@ export default class Content extends Component {
   selectedTab = (event) => {
     // console.log('event in selectedTab', event.target)
     event.preventDefault();
-    // this.setState({
-    //   selected: event.target
-    // })
-    // console.log('selectedTab returns...', this.state.selected)
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Tab from './Tab';
 // import { prependOnceListener } from 'cluster';
+import PropTypes from "prop-types";
 
 const Tabs = props => {
   // console.log("props = ", props)
