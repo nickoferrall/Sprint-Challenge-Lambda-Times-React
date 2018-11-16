@@ -18,10 +18,18 @@ export default class Content extends Component {
 
   componentDidMount() {
     // Once the component has mounted, get the data and reflect that data on the state.
+    this.setState({
+      tabs: tabData,
+      cards: cardData
+    })
   }
 
   changeSelected = tab => {
     // this function should take in the tab and update the state with the new tab.
+    console.log('this state selected in changeSelected =', this.state.selected)
+    this.setState({
+      selected: tab
+    })
   };
 
   filterCards = () => {
@@ -40,7 +48,18 @@ export default class Content extends Component {
     return this.state.cards;
   };
 
+  selectedTab = (event) => {
+    // console.log('event in selectedTab', event.target)
+    event.preventDefault();
+    this.setState({
+      selected: event.target
+    })
+  }
+
   render() {
+    // console.log('this.state.tabs =', this.state.tabs)
+    // console.log('this.state =', this.state)
+    console.log('state selected in render', this.state.selected)
     return (
       <div className="content-container">
         {/* 
@@ -48,7 +67,11 @@ export default class Content extends Component {
           `selectedTab` that includes the currently selected tab
           and `selectTabHandler` that includes the function to change the selected tab
         */}
-        <Tabs tabs={this.state.tabs} />
+        <Tabs 
+          tabs={this.state.tabs} 
+          selectedTab={this.selectedTab}
+          selectTabHandler={this.changeSelected}
+        />
         <Cards cards={this.filterCards()} />
       </div>
     );
